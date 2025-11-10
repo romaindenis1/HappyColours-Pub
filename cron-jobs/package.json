@@ -1,0 +1,15 @@
+{
+  "name": "cron-jobs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cron-jobs.js",
+  "scripts": {
+    "cron": "node cron-jobs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-cron": "^4.2.1"
+  }
+}

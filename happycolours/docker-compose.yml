@@ -1,0 +1,47 @@
+services:
+  # Container DB
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: colours
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_dataa:/var/lib/mysql
+    healthcheck:
+      test:
+        ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+  # Container nextjs
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: happycolours_app
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.production
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./prisma:/app/prisma
+
+  # Container Cron
+  cron:
+    image: fabreantoine/cron-jobs:1.1
+    container_name: cron
+    restart: always
+    env_file:
+      - .env.production
+
+volumes:
+  mysql_dataa:

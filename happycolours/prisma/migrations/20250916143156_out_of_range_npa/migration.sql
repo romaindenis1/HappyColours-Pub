@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `lieux` MODIFY `NPA` INTEGER NULL;

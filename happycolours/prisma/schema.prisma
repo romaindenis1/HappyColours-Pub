@@ -1,0 +1,140 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id        Int    @id @default(autoincrement())
+  nom       String @db.VarChar(100)
+  prenom    String @db.VarChar(100)
+  telephone String @db.VarChar(20)
+  mail      String @db.VarChar(320)
+  password  String @db.VarChar(255)
+  salt      String @db.VarChar(32)
+  worker    Boolean @default(false)
+
+  reservations reservations[]
+  mails        mails[]
+}
+
+model lieux {
+  id        Int     @id @default(autoincrement())
+  nom       String  @db.VarChar(50)
+  adresse   String  @db.VarChar(50)
+  NPA       Int
+  localite  String  @db.VarChar(50)
+  latitude  Decimal @db.Decimal(12, 6)
+  longitude Decimal @db.Decimal(12, 6)
+
+  salles salles[]
+}
+
+model salles {
+  id       Int    @id @default(autoincrement())
+  nom      String @db.VarChar(50)
+  capacite Int    @db.TinyInt
+  lieu_id  Int
+
+  lieu lieux @relation(fields: [lieu_id], references: [id])
+
+  appartenir appartenir[]
+  etre       etre[]
+}
+
+model joursFermes {
+  id    Int      @id @default(autoincrement())
+  date_ DateTime @db.Date
+
+  appartenir appartenir[]
+}
+
+model formules {
+  id          Int    @id @default(autoincrement())
+  titleFR       String @db.VarChar(50)
+  titleEN       String @db.VarChar(50)
+  titleDE       String @db.VarChar(50)
+
+  descriptionFR String @db.VarChar(150)
+  descriptionEN String @db.VarChar(150)
+  descriptionDE String @db.VarChar(150)
+
+  image       String @db.VarChar(100)
+  color       String @db.VarChar(50)
+  icon        String @db.VarChar(50)
+  duree       Int    @db.SmallInt
+
+  tranche_prix tranche_prix[]
+  reservations reservations[]
+  etre         etre[]
+}
+
+model tranche_prix {
+  id           Int     @id @default(autoincrement())
+  prix         Decimal @db.Decimal(10, 2)
+  minPersonnes Int     @db.TinyInt
+  maxPersonnes Int     @db.TinyInt
+  formule_id   Int
+
+  formule formules @relation(fields: [formule_id], references: [id])
+}
+
+model questions {
+  id       Int    @id @default(autoincrement())
+  question String @db.VarChar(1023)
+  reponse  String @db.VarChar(2047)
+}
+
+model reservations {
+  id                 Int       @id @default(autoincrement())
+  date               DateTime? @db.Date
+  debut              DateTime? @db.Time
+  nbrPerson          Int       @db.TinyInt
+  dateReservationWeb DateTime  @db.Date
+  prix               Decimal   @default(0.0) @db.Decimal(10, 2)
+  status             String    @default("Pending")
+  formule_id         Int
+  user_id            Int
+
+  formule formules @relation(fields: [formule_id], references: [id])
+  user    users    @relation(fields: [user_id], references: [id])
+
+  mails mails[]
+}
+
+model appartenir {
+  salle_id     Int
+  jourFerme_id Int
+
+  salle     salles      @relation(fields: [salle_id], references: [id])
+  jourFerme joursFermes @relation(fields: [jourFerme_id], references: [id])
+
+  @@id([salle_id, jourFerme_id])
+}
+
+model etre {
+  salle_id   Int
+  formule_id Int
+
+  salle   salles   @relation(fields: [salle_id], references: [id])
+  formule formules @relation(fields: [formule_id], references: [id])
+
+  @@id([salle_id, formule_id])
+}
+
+model mails {
+  id         Int      @id @default(autoincrement())
+  date_envoi DateTime @db.Date
+
+  type_mail String
+
+  user_id        Int
+  reservation_id Int
+
+  reservation reservations @relation(fields: [reservation_id], references: [id])
+  user        users        @relation(fields: [user_id], references: [id])
+}

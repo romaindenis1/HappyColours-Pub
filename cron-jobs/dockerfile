@@ -1,0 +1,12 @@
+# Étape 1: Dépendances
+FROM node:20-alpine
+WORKDIR /app
+
+# Copier les fichiers de package
+COPY package*.json ./
+RUN npm ci
+COPY . .
+ENV ADDRESSE="localhost:3000"
+
+# Commande de démarrage avec migration Prisma
+CMD ["sh", "-c", "npx run cron-jobs"]

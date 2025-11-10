@@ -1,0 +1,33 @@
+name: deploiement sur le serveur de prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSHACTIONSHAPPYCOLOURS }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H 83.228.208.109 >> ~/.ssh/known_hosts
+
+      - name: 🚀 Deploy to Production Server
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ubuntu@83.228.208.109 << 'EOF'
+          cd happycolours/
+          sudo git pull origin main
+          cd happycolours/
+          sudo docker compose down
+          sudo docker system prune -af
+          sudo docker compose up -d
+          EOF
