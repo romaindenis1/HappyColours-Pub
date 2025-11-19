@@ -14,14 +14,14 @@
     "carte1Section2Titre": "A bubble of good vibes",
     "carte1Section2Description": "More than just a painting workshop: a space where anything goes.",
     "carte2Section2Titre": "For everyone 🎉",
-    "carte2Section2Description": "Birthdays, family, team building, bachelorette/bachelor parties… everyone has a great time.",
+    "carte2Section2Description": "Birthdays, family, team building, bachelor parties… everyone has a great time.",
     "carte3Section2Titre": "A unique souvenir",
     "carte3Section2Description": "You leave with your own canvas — and sometimes a few colorful memories 😉",
 
     "section3Titre": "How does it work?",
     "section3Description": "Three simple steps to unleash your creativity.",
     "etape1Titre": "Choose your Happy Colours session",
-    "etape1Description": "Easily book the time slot and formula you like – solo, with family, or with your team!",
+    "etape1Description": "Easily book the time slot and formula you like – solo, with family, or with a team!",
     "etape2Titre": "Express yourself without limits",
     "etape2Description": "Brushes, balls, rackets, boxing gloves… or your hands: here, art means freedom and bursts of color.",
     "etape3Titre": "Take your artwork home",
@@ -30,7 +30,7 @@
 
     "section4Titre": "Ready to",
     "section4TitreGradient": "brighten your day?",
-    "section4Description": "Book now and come create something extraordinary: a fun, freeing, and unforgettable moment awaits at Happy Colours.",
+    "section4Description": "Book now and come create something extraordinary: a fun, liberating, and unforgettable moment awaits at Happy Colours.",
     "section4Bouton": "Book my session",
 
     "trust1Emoji": "🛡️",
@@ -87,7 +87,7 @@
 
   "Formules": {
     "titreSection": "Our Creative Experiences",
-    "sousTitre": "Choose the artistic adventure that suits you. Each experience is designed to reveal your unique creative potential.",
+    "sousTitre": "Choose the artistic adventure that fits you. Each experience is designed to reveal your unique creative potential.",
     "decouvrir": "Discover",
     "imageAlt": "Formula image"
   },
@@ -104,7 +104,7 @@
     "duree": "Duration",
     "dureTexte": "Pure creativity session",
     "materiel": "Materials",
-    "materialTexte": "Everything provided on-site",
+    "materialTexte": "Everything provided on site",
     "votreSelection": "Your Selection",
     "participants": "Participants",
     "personne": "person",
@@ -148,15 +148,15 @@
     "inscriptionEnCours": "Signing up...",
     "dejaCmpte": "Already have an account?",
     "connectez": "Sign In",
-    "erreurNomObligatoire": "Last name is required.",
     "erreurPrenomObligatoire": "First name is required.",
+    "erreurNomObligatoire": "Last name is required.",
     "erreurTelephoneObligatoire": "Phone number is required.",
     "erreurFormatTelephone": "International format expected (ex. +41 76 123 45 67, 0044 20 7946 0958).",
     "erreurEmailObligatoire": "Email is required.",
     "erreurEmailInvalide": "Please enter a valid email address (ex. name@domain.ch).",
     "erreurMotDePasseObligatoire": "Password is required.",
-    "erreurMotDePasseForce": "8+ characters with at least one lowercase letter, one uppercase letter and one digit.",
-    "indiceMotDePasse": "8+ characters with at least one lowercase letter, one uppercase letter and one digit.",
+    "erreurMotDePasseForce": "8+ characters with at least one lowercase letter, one uppercase letter and one number.",
+    "indiceMotDePasse": "8+ characters with at least one lowercase letter, one uppercase letter and one number.",
     "erreurInscription": "Registration failed. Please try again.",
     "erreurConnexion": "An error occurred. Check your connection and try again.",
     "autocompletePrenom": "given-name",
@@ -262,7 +262,7 @@
   "Metadata": {
     "title": "Happy Colours - Fun Family Activities, Friends & Team Building",
     "description": "Experience an unforgettable adventure with Happy Colours! Colorful and fun activities for families, friend groups and corporate team building. Book your adventure now.",
-    "keywords": "Colours, Color your life, Bern, happy colours, family activities, outing with friends, Family, team building, group activities, colorful event, original outing, corporate entertainment, team cohesion, creative leisure",
+    "keywords": "Colours, Color your life, Bern, happy colours, family activities, outing with friends, Family, team building, group activities, colorful event, original outing, corporate entertainment, team cohesion, creative entertainment",
     "ogTitle": "Happy Colours - The Colorful Adventure for Everyone",
     "ogDescription": "Exceptional activities to create memorable moments with family, friends or as a team. Join the Happy Colours adventure!"
   }
